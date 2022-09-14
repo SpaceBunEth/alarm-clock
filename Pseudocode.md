@@ -112,7 +112,7 @@ UpdateDateTime()
     Get DateTime
     Set var Date to DateTimes's date
     Set var Time to DateTimes's time
-    Return Date, Time
+    Return
 
 SetAlarm()
     Prompt Window "Asks user to enter data"
@@ -121,14 +121,17 @@ SetAlarm()
         Exit Prompt Window
     Else 
         Wait For User
+    Return
 
 AlarmAlert()
     Window Prompt "Alarm RING RING"
     Wait For User
+    Return
     
 UpdateDisplay()
     Set PageELemet.text TO Time
     Set PageElement.text TO Date
+    Return
 
 
 
