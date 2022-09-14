@@ -19,7 +19,7 @@ We need to construct pseudocode for a alarm clock that can be fitted for HTML, C
 - provide the user with an alart when the set alarm time is reached
 
 ### Project will consist of HTML, CSS, and Javascript Code
-This Pseudocode is written with web development in mind. Their for terms and concepts from the languages listed above will be referenced within the Pseudocode.
+This Pseudocode is written with web development in mind. Their for terms and concepts from the languages listed above that will be referenced within the Pseudocode.
 
 - - - 
 
@@ -97,6 +97,13 @@ hour
 minute
 second
 ```
+
+### PageElement
+> PageElement represents the elements a user would see on a web page i.e. HTML tags
+### Properties
+```
+.text
+```
 - - -
 ## Functionality
 ### Helper Functions
@@ -119,16 +126,33 @@ AlarmAlert()
     Window Prompt "Alarm RING RING"
     Wait For User
     
+UpdateDisplay()
+    Set PageELemet.text TO Time
+    Set PageElement.text TO Date
+
+
 
 ```
 
-### Start Up
+### RUN
 ```
-Load Page
+Load PageElements
 Fetch Current DateTime
 Set var Date to DateTime's date
 Set var Time to DateTime's time
 Set var Alarm to nothing
+
+Event Button IS 'clicked'
+    SetAlarm()
+
+FOREVER LOOP
+    UpdateDateTime()
+    UpdateDisplay()
+    IF Alarm Equals Date AND Time
+        AlarmAlert()
+    
+    
+
 
 
 ```
