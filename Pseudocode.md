@@ -19,7 +19,7 @@ We need to construct pseudocode for a alarm clock that can be fitted for HTML, C
 - provide the user with an alart when the set alarm time is reached
 
 ### Project will consist of HTML, CSS, and Javascript Code
-This Pseudocode is written with web development in mind. Their for terms and concepts from the languages listed above that will be referenced within the Pseudocode.
+This Pseudocode is written with web development in mind. Their for terms and concepts from the languages listed above will be referenced within the Pseudocode.
 
 - - - 
 
