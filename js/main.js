@@ -34,6 +34,7 @@ function currentTime() {
         currentDayName: nameOfDay[dateTime.getDay()],
         currentDayNum: dateTime.getDate(),
         currentHour: convertHour(dateTime.getHours()),
+        currentHourMilitary: dateTime.getHours(),
         currentMinute: dateTime.getMinutes(),
         currentSecond: dateTime.getSeconds(),
     };
@@ -68,4 +69,15 @@ function Start() {
 
 }
 
+function Alarm() {
+    alert('RING RING The Time is Now:')
+}
 
+function askME() {
+    input = prompt('something here');
+    alert(`hey you typed ${input}`)
+}
+
+function SetAlarm() {
+
+}
