@@ -56,7 +56,8 @@ function Start() {
     const global = currentTime();
     console.log(global);
     let globalsecond = global.currentSecond
-    const intervalID = setInterval(changeSecond, 1000, globalsecond);
+    console.log("Testing time",globalsecond)
+    const intervalID = setInterval(changeSecond, 999, globalsecond);
 
     function changeSecond(second) {
         globalsecond = globalsecond + 1;
@@ -76,8 +77,10 @@ function Alarm() {
 function askME() {
     input = prompt('something here');
     alert(`hey you typed ${input}`)
+    const userDate = new Date(input)
+    console.log(userDate)
 }
 
 function SetAlarm() {
 
-}
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
