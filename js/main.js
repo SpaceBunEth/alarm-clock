@@ -1,9 +1,11 @@
 console.log("hello World")
+let parse1 = 0;
+let parse2 = 0;
 
 // Time manager
 function currentTime() {
     const dateTime = new Date() //set var to new current date object
-
+    parse1 = Date.parse(dateTime)
     const nameOfDay = [
         'Sunday',
         'Monday',
@@ -63,6 +65,7 @@ function Start() {
     titleChangeDate(global);
     let globalsecond = global.currentSecond;
     const intervalID = setInterval(changeSecond, 999, globalsecond);
+    Alarm()
 
     function changeSecond(second) {
         if (globalsecond > 59) {
@@ -78,9 +81,9 @@ function Start() {
 
 }
 
-function Alarm() {
-    alert('RING RING The Time is Now:')
-}
+// function Alarm() {
+//     alert('RING RING The Time is Now:')
+// }
 
 function askME() {
     input = prompt('something here');
@@ -201,7 +204,12 @@ everydayId.addEventListener('click', () => {
 })
 
 // Alarm Manager
+function Alarm() {
+console.log("CurrentTime", parse1)
+console.log("UserTime", parse2)
+}
+
 function alarmOnce(onceAlarm) {
-    const userAlarm = new Date(onceAlarm)
-    console.log(userAlarm)
+    const userAlarm = Date.parse(onceAlarm)
+    parse2 = userAlarm
 }
