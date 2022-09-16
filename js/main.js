@@ -42,24 +42,26 @@ function currentTime() {
     return holdTime;
 }
 
+// converts 24 Time into 12 hour time
 function convertHour(hour) {
     if (hour > 12) {
         hour = hour - 12;
         // console.log('PM');
         return [hour, 'PM'];
+    } if (hour == 0) {
+        hour = 12;
+        return [hour, 'AM']
     } else {
         // console.log('AM');
         return [hour, 'AM'];
     }
 }
 
+// Manages currentTime() and DOM live display of Time
 function Start() {
     const global = currentTime();
-    console.log(' New global Object set')
-    // titleSetTimeDate(global)
-    console.log(global);
-    let globalsecond = global.currentSecond
-    console.log('Before function ', globalsecond)
+    titleChangeDate(global);
+    let globalsecond = global.currentSecond;
     const intervalID = setInterval(changeSecond, 999, globalsecond);
 
     function changeSecond(second) {
@@ -69,7 +71,6 @@ function Start() {
             clearInterval(intervalID)
             Start()
         }else{
-            console.log("Sent to DOM ", global, globalsecond)
             titleChangeTime(global, globalsecond)
             globalsecond = globalsecond + 1;
         }
@@ -92,25 +93,8 @@ function SetAlarm() {
 
 }
 
-// HTML H tag Time and Date 
-// function titleSetTimeDate(titleHoldTime) {
-//     const titleTime = document.getElementById('titleTime');
-//     if (titleHoldTime.currentHour < 10){
-//         titleHoldTime.currentHour = '0' + titleHoldTime.currentHour
-//         console.log(titleHoldTime.currentHour)
-//     }
-//     if (titleHoldTime.currentMinute < 10){
-//         titleHoldTime.currentMinute = '0' + titleHoldTime.currentMinute
-//         console.log(titleHoldTime.currentMinute)
-//     }
-//     if (titleHoldTime.currentSecond < 10){
-//         titleHoldTime.currentSecond = '0' + titleHoldTime.currentSecond
-//         console.log(titleHoldTime.currentSecond)
-//     }
-//     titleTime.textContent = "Time: "+ titleHoldTime.currentHour[0] + ":" + titleHoldTime.currentMinute + ":" + titleHoldTime.currentSecond + " " + titleHoldTime.currentHour[1];
 
-// }
-
+// Changes Time on DOM
 function titleChangeTime(titleHoldTime, titleSecond) {
     const titleTime = document.getElementById('titleTime');
     let hour = titleHoldTime.currentHour[0];
@@ -130,6 +114,13 @@ function titleChangeTime(titleHoldTime, titleSecond) {
     }
     titleTime.textContent = "Time: "+ hour + ":" + minute + ":" + titleSecond + " " + titleHoldTime.currentHour[1];
 
+}
+
+// Changes Date on DOM 
+
+function titleChangeDate(titleHoldDate) {
+    const titleDate = document.getElementById('titleDate');
+    titleDate.textContent = "Date: " + titleHoldDate.currentMonth + " " + titleHoldDate.currentDayNum + ", " + titleHoldDate.currentDayName + ", " +  titleHoldDate.currentYear;
 }
 
 // HTML Elements for Alarm Manager
@@ -164,7 +155,12 @@ btnSubmitAlarm.addEventListener('click', () => {
 
     console.log(userTime.value)
     console.log(onceId.value)
-    
+    if (onceBtnId.checked) {
+        const userAlarm = onceId.value + "T" + userTime.value + ":00Z"
+        console.log(userAlarm)
+        alarmOnce(userAlarm);
+    }
+
 });
 
 chooseDay.addEventListener('click', () => {
@@ -204,3 +200,8 @@ everydayId.addEventListener('click', () => {
     }
 })
 
+// Alarm Manager
+function alarmOnce(onceAlarm) {
+    const userAlarm = new Date(onceAlarm)
+    console.log(userAlarm)
+}
