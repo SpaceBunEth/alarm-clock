@@ -8,22 +8,23 @@
         
     </head>
     <body>
-        <h1>Time</h1>
-        <h2>date</h2>
+        <h1 id="titleTime">Time</h1>
+        <h2 id="titleDate">date</h2>
         <hr>
-        <div>
+        <button id="btnSetAlarm">Set Alarm</button>
+        <div id="setAlarmDivId">
             <form>
-                <input type="time">
+                <input id="userTime" type="time">
             </form>
             <form>
                 <label>Everyday</label>
-                <input type="checkbox">
+                <input id="everydayId" type="checkbox">
                 <label>Choose Day</label>
-                <input type="checkbox">
+                <input id="chooseDayId" type="checkbox">
                 <label>Once</label>
-                <input type="checkbox">
+                <input id="onceBtnId" type="checkbox">
             </form>
-            <form>
+            <form id="daysOfWeekId">
                 <label>Sunday</label>
                 <input type="checkbox">
                 <label>Monday</label>
@@ -40,10 +41,10 @@
                 <input type="checkbox">
             </form>
             <form>
-                <input type="date">
+                <input id="onceId" type="date">
             </form>
-            <button>Submit Alarm(s)</button>
+            <button id="btnSubmitAlarm">Submit Alarm(s)</button>
         </div>
-        <button>Set Alarm</button>
+
     </body>
 </html>
