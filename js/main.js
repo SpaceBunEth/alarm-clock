@@ -115,7 +115,7 @@ function titleChangeTime(titleHoldTime, titleSecond) {
         titleSecond = '0' + titleSecond;
         
     }
-    titleTime.textContent = "Time: "+ hour + ":" + minute + ":" + titleSecond + " " + titleHoldTime.currentHour[1];
+    titleTime.textContent = hour + ":" + minute + ":" + titleSecond + " " + titleHoldTime.currentHour[1];
 
 }
 
@@ -123,7 +123,7 @@ function titleChangeTime(titleHoldTime, titleSecond) {
 
 function titleChangeDate(titleHoldDate) {
     const titleDate = document.getElementById('titleDate');
-    titleDate.textContent = "Date: " + titleHoldDate.currentMonth + " " + titleHoldDate.currentDayNum + ", " + titleHoldDate.currentDayName + ", " +  titleHoldDate.currentYear;
+    titleDate.textContent = titleHoldDate.currentMonth + " " + titleHoldDate.currentDayNum + ", " + titleHoldDate.currentDayName + ", " +  titleHoldDate.currentYear;
 }
 
 // HTML Elements for Alarm Manager
