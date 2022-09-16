@@ -45,28 +45,33 @@ function currentTime() {
 function convertHour(hour) {
     if (hour > 12) {
         hour = hour - 12;
-        console.log('PM');
+        // console.log('PM');
         return [hour, 'PM'];
     } else {
-        console.log('AM');
+        // console.log('AM');
         return [hour, 'AM'];
     }
 }
 
 function Start() {
     const global = currentTime();
-    titleSetTimeDate(global)
+    console.log(' New global Object set')
+    // titleSetTimeDate(global)
     console.log(global);
     let globalsecond = global.currentSecond
-    console.log("Testing time",globalsecond)
+    console.log('Before function ', globalsecond)
     const intervalID = setInterval(changeSecond, 999, globalsecond);
 
     function changeSecond(second) {
-        globalsecond = globalsecond + 1;
-        console.log(globalsecond);
         if (globalsecond > 59) {
+            globalsecond = 0;
+            titleChangeTime(global, globalsecond)
             clearInterval(intervalID)
             Start()
+        }else{
+            console.log("Sent to DOM ", global, globalsecond)
+            titleChangeTime(global, globalsecond)
+            globalsecond = globalsecond + 1;
         }
     }
 
@@ -88,13 +93,42 @@ function SetAlarm() {
 }
 
 // HTML H tag Time and Date 
-function titleSetTimeDate(titleHoldTime) {
+// function titleSetTimeDate(titleHoldTime) {
+//     const titleTime = document.getElementById('titleTime');
+//     if (titleHoldTime.currentHour < 10){
+//         titleHoldTime.currentHour = '0' + titleHoldTime.currentHour
+//         console.log(titleHoldTime.currentHour)
+//     }
+//     if (titleHoldTime.currentMinute < 10){
+//         titleHoldTime.currentMinute = '0' + titleHoldTime.currentMinute
+//         console.log(titleHoldTime.currentMinute)
+//     }
+//     if (titleHoldTime.currentSecond < 10){
+//         titleHoldTime.currentSecond = '0' + titleHoldTime.currentSecond
+//         console.log(titleHoldTime.currentSecond)
+//     }
+//     titleTime.textContent = "Time: "+ titleHoldTime.currentHour[0] + ":" + titleHoldTime.currentMinute + ":" + titleHoldTime.currentSecond + " " + titleHoldTime.currentHour[1];
+
+// }
+
+function titleChangeTime(titleHoldTime, titleSecond) {
     const titleTime = document.getElementById('titleTime');
-    if (titleHoldTime.currentMinute < 10){
-        titleHoldTime.currentMinute = '0' + titleHoldTime.currentMinute
-        console.log(titleHoldTime.currentMinute)
+    let hour = titleHoldTime.currentHour[0];
+    let minute = titleHoldTime.currentMinute;
+
+    if (hour < 10){
+        hour = '0' + hour;
+        
     }
-    titleTime.textContent = "Time: "+ titleHoldTime.currentHour[0] + ":" + titleHoldTime.currentMinute + ":" + titleHoldTime.currentSecond + " " + titleHoldTime.currentHour[1];
+    if (minute < 10){
+        minute = '0' + minute;
+        
+    }
+    if (titleSecond < 10){
+        titleSecond = '0' + titleSecond;
+        
+    }
+    titleTime.textContent = "Time: "+ hour + ":" + minute + ":" + titleSecond + " " + titleHoldTime.currentHour[1];
 
 }
 
