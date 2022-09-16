@@ -160,8 +160,8 @@ btnSubmitAlarm.addEventListener('click', () => {
     console.log(onceId.value)
     if (onceBtnId.checked) {
         const userAlarm = onceId.value + "T" + userTime.value + ":00Z"
-        console.log(userAlarm)
-        alarmOnce(userAlarm);
+        const userparse = Date.parse(userAlarm)
+        alarmOnce(userparse)
     }
 
 });
@@ -205,11 +205,17 @@ everydayId.addEventListener('click', () => {
 
 // Alarm Manager
 function Alarm() {
-console.log("CurrentTime", parse1)
-console.log("UserTime", parse2)
+    if (parse1 > parse2 && parse1 !== 0 && parse2 !== 0){
+        alert("RING RING !!!")
+        parse1 = 0;
+        parse2 = 0;
+    }else{
+        console.log("No Alarm")
+    }
 }
 
 function alarmOnce(onceAlarm) {
-    const userAlarm = Date.parse(onceAlarm)
-    parse2 = userAlarm
+    parse2 = onceAlarm;
 }
+
+Start()
