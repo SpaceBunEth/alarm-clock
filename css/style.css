@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'digital-7';
+    src: url('/img/digital-7.regular.ttf');
+} 
+
+body {
+    font-family: 'digital-7';
+    font-size: 50px;
+    color: #e02027;
+    background-color: black;
+
+    text-align: center;
+    text-shadow: 2px 2px 20px #7e1d20;
+}

@@ -62,6 +62,7 @@ function convertHour(hour) {
 // Manages currentTime() and DOM live display of Time
 function Start() {
     const global = currentTime();
+    console.log(global);
     titleChangeDate(global);
     let globalsecond = global.currentSecond;
     const intervalID = setInterval(changeSecond, 999, globalsecond);
@@ -74,6 +75,7 @@ function Start() {
             clearInterval(intervalID)
             Start()
         }else{
+            console.log(globalsecond)
             titleChangeTime(global, globalsecond)
             globalsecond = globalsecond + 1;
         }
@@ -115,7 +117,7 @@ function titleChangeTime(titleHoldTime, titleSecond) {
         titleSecond = '0' + titleSecond;
         
     }
-    titleTime.textContent = "Time: "+ hour + ":" + minute + ":" + titleSecond + " " + titleHoldTime.currentHour[1];
+    titleTime.textContent = hour + ":" + minute + ":" + titleSecond + " " + titleHoldTime.currentHour[1];
 
 }
 
@@ -123,7 +125,7 @@ function titleChangeTime(titleHoldTime, titleSecond) {
 
 function titleChangeDate(titleHoldDate) {
     const titleDate = document.getElementById('titleDate');
-    titleDate.textContent = "Date: " + titleHoldDate.currentMonth + " " + titleHoldDate.currentDayNum + ", " + titleHoldDate.currentDayName + ", " +  titleHoldDate.currentYear;
+    titleDate.textContent = titleHoldDate.currentMonth + " " + titleHoldDate.currentDayNum + ", " + titleHoldDate.currentDayName + ", " +  titleHoldDate.currentYear;
 }
 
 // HTML Elements for Alarm Manager
@@ -208,7 +210,8 @@ function Alarm() {
     if (parse1 > parse2 && parse1 !== 0 && parse2 !== 0){
         alert("RING RING !!!")
         parse1 = 0;
-        parse2 = 0;
+        parse2 = 0; 
+        currentTime()
     }else{
         console.log("No Alarm")
     }
